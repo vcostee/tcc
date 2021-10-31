@@ -5,11 +5,6 @@
  */
 package entidades;
 
-/**
- *
- * @author Joao Duarte
- */
 public interface ClassePai {
     public Long getId();
-     
 }

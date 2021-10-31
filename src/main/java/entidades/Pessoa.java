@@ -1,97 +1,108 @@
 package entidades;
 
+import ENUM.TipoPessoa;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
-public class Pessoa implements Serializable {
+@Entity
+public class Pessoa implements Serializable, ClassePai {
 
-    private static final long serialVersionUID = 1l;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column
-    private String nome;
-    @Column
-    private String sobrenome;
-    @Column
-    private String telefone;
-    @Column
-    private String rua;
-    @Column
-    private String numero;
-    @Column
-    private String endereco;
-    @Column
+    private Long pesId;
+
+    @Column(name = "pes_nome")
+    private String pesNome;
+
+    @Column(name = "pes_rg")
+    private String pesRg;
+
+    @Column(name = "pes_cpf")
+    private String pesCpf;
+
+    @Column(name = "pes_cnpj")
+    private String pesCnpj;
+
+    @Column(name = "pes_nasc")
     @Temporal(TemporalType.DATE)
-    private Date dataNascimento;
+    private Date pesDataNascimento;
+
+    @Column(name = "pes_admissao")
+    @Temporal(TemporalType.DATE)
+    private Date pesDataAdm;
+
+    @Column(name = "pes_salario")
+    private BigDecimal pesSalario;
+
+    @Column(name = "pes_funcionario")
+    private Boolean pesFuncionario;
+
+    @Column(name = "pes_fornecedor")
+    private Boolean pesFornecedor;
+
+    @Column(name = "pes_tipo")
+    private TipoPessoa pesTipo;
+
+    @ManyToOne
+    @JoinColumn(name = "cargo_id")
+    private Cargo cargo;
+
 
     // Gets e Sets
 
+    public String getPesNome() { return pesNome; }
 
-    public Long getId() {
-        return id;
-    }
+    public void setPesNome(String pesNome) { this.pesNome = pesNome; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getPesRg() { return pesRg; }
 
-    public String getNome() {
-        return nome;
-    }
+    public void setPesRg(String pesRg) { this.pesRg = pesRg; }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public String getPesCpf() { return pesCpf; }
 
-    public String getSobrenome() {
-        return sobrenome;
-    }
+    public void setPesCpf(String pesCpf) { this.pesCpf = pesCpf; }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
+    public Date getPesDataNascimento() { return pesDataNascimento; }
 
-    public String getTelefone() {
-        return telefone;
-    }
+    public void setPesDataNascimento(Date pesDataNascimento) { this.pesDataNascimento = pesDataNascimento; }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+    public BigDecimal getPesSalario() { return pesSalario; }
 
-    public String getRua() {
-        return rua;
-    }
+    public void setPesSalario(BigDecimal pesSalario) { this.pesSalario = pesSalario; }
 
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
+    public String getPesCnpj() { return pesCnpj; }
 
-    public String getNumero() {
-        return numero;
-    }
+    public void setPesCnpj(String pesCnpj) { this.pesCnpj = pesCnpj; }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
+    public Date getPesDataAdm() { return pesDataAdm; }
 
-    public String getEndereco() {
-        return endereco;
-    }
+    public void setPesDataAdm(Date pesDataAdm) { this.pesDataAdm = pesDataAdm; }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
+    public Boolean getPesFuncionario() { return pesFuncionario; }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
+    public void setPesFuncionario(Boolean pesFuncionario) { this.pesFuncionario = pesFuncionario; }
 
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public Boolean getPesFornecedor() { return pesFornecedor; }
+
+    public void setPesFornecedor(Boolean pesFornecedor) { this.pesFornecedor = pesFornecedor; }
+
+    public TipoPessoa getPesTipo() { return pesTipo; }
+
+    public void setPesTipo(TipoPessoa pesTipo) { this.pesTipo = pesTipo; }
+
+    public Cargo getCargo() { return cargo; }
+
+    public void setCargo(Cargo cargo) { this.cargo = cargo; }
+
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 
     @Override
@@ -99,18 +110,20 @@ public class Pessoa implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pessoa pessoa = (Pessoa) o;
-        return Objects.equals(id, pessoa.id) && Objects.equals(nome, pessoa.nome) && Objects.equals(sobrenome, pessoa.sobrenome) && Objects.equals(telefone, pessoa.telefone) && Objects.equals(rua, pessoa.rua) && Objects.equals(numero, pessoa.numero) && Objects.equals(endereco, pessoa.endereco) && Objects.equals(dataNascimento, pessoa.dataNascimento);
+        return Objects.equals(pesId, pessoa.pesId) && Objects.equals(pesNome, pessoa.pesNome) && Objects.equals(pesRg, pessoa.pesRg) && Objects.equals(pesCpf, pessoa.pesCpf) && Objects.equals(pesDataNascimento, pessoa.pesDataNascimento) && Objects.equals(pesSalario, pessoa.pesSalario);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, sobrenome, telefone, rua, numero, endereco, dataNascimento);
+        return Objects.hash(pesId, pesNome, pesRg, pesCpf, pesDataNascimento, pesSalario);
     }
 
     @Override
-    public String toString() {
-        return "Pessoa{" +
-                "id=" + id +
-                '}';
+    public Long getId() {
+        return pesId;
+    }
+
+    public void setPesId(Long pesId) {
+        this.pesId = pesId;
     }
 }

@@ -9,10 +9,6 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.regex.Pattern;
 
-/**
- *
- * @author Joao Duarte
- */
 @FacesConverter(value = "moneyConverter")
 public class MoneyConverter implements Converter {
 

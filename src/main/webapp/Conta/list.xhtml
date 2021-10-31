@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template.xhtml">
+
+    <ui:define name="body">
+
+        <div class="card">
+            <h:form id="form">
+                <div style="text-align: center">
+                    <p:outputLabel value="Contas a Pagar" style="font-size: x-large"/>
+                </div>
+                <p:tabView>
+                    <p:tab title="Contas a Pagar">
+                        <p:dataTable var="rp" value="#{receberPagarControle.listaReceberPagar}" rows="10"
+                                     paginator="true"
+                                     selectionMode="single"
+                                     selection="#{receberPagarControle.receberPagar}"
+                                     rowKey="#{rp}"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                     paginatorPosition="bottom"
+                                     rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                                     emptyMessage="Nenhuma Conta Encontrada">
+
+                            <f:facet name="header">
+                                <p:commandButton value="Novo Cadastro" styleClass="ui-button-raised"
+                                                 actionListener="#{receberPagarControle.novo()}" action="create.xhtml"/>
+                            </f:facet>
+
+                            <p:column headerText="ID">
+                                <h:outputText value="#{rp.rpId}"/>
+                            </p:column>
+                            <p:column headerText="Valor">
+                                <h:outputText value="#{rp.rpValor}">
+                                    <f:convertNumber type="currency" currencySymbol="R$"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Quantidade Parcelas">
+                                <h:outputText value="#{rp.rpQtdParcelas}"/>
+                            </p:column>
+                            <p:column headerText="Número Parcela">
+                                <h:outputText value="#{rp.rpNumParcela}/#{rp.rpQtdParcelas}"/>
+                            </p:column>
+                            <p:column headerText="Data Cadastro">
+                                <h:outputText value="#{rp.rpDataCadastro}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Data Vencimento">
+                                <h:outputText value="#{rp.rpDataVencimento}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Status">
+                                <h:outputText value="#{rp.rpStatus.descricao}"/>
+                            </p:column>
+                            <p:column headerText="Observação">
+                                <h:outputText value="#{rp.rpObs}"/>
+                            </p:column>
+
+
+                            <p:column headerText="Operações">
+                                <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
+                                                 ajax="false" immediate="true"
+                                                 actionListener="#{receberPagarControle.excluir(rp)}"/>
+                                <p:commandButton icon="pi pi-pencil" ajax="false" styleClass="ui-button-raised"
+                                                 action="create" immediate="true"
+                                                 actionListener="#{receberPagarControle.editar(rp)}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:tab>
+
+                    <p:tab title="Contas Pagas">
+                        <p:dataTable var="rp" value="#{receberPagarControle.listaReceberPagar}" rows="10"
+                                     paginator="true"
+                                     selectionMode="single"
+                                     selection="#{receberPagarControle.receberPagar}"
+                                     rowKey="#{rp}"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                     paginatorPosition="bottom"
+                                     rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                                     emptyMessage="Nenhum Cargo Encontrado">
+
+                            <f:facet name="header">
+                                <p:commandButton value="Novo Cadastro" styleClass="ui-button-raised"
+                                                 actionListener="#{receberPagarControle.novo()}" action="create.xhtml"/>
+                            </f:facet>
+
+                            <p:column headerText="ID">
+                                <h:outputText value="#{rp.rpId}"/>
+                            </p:column>
+                            <p:column headerText="Valor">
+                                <h:outputText value="#{rp.rpValor}">
+                                    <f:convertNumber type="currency" currencySymbol="R$"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Quantidade Parcelas">
+                                <h:outputText value="#{rp.rpQtdParcelas}"/>
+                            </p:column>
+                            <p:column headerText="Número Parcela">
+                                <h:outputText value="#{rp.rpNumParcela}/#{rp.rpQtdParcelas}"/>
+                            </p:column>
+                            <p:column headerText="Data Cadastro">
+                                <h:outputText value="#{rp.rpDataCadastro}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Data Vencimento">
+                                <h:outputText value="#{rp.rpDataVencimento}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Status">
+                                <h:outputText value="#{rp.rpStatus.descricao}"/>
+                            </p:column>
+                            <p:column headerText="Observação">
+                                <h:outputText value="#{rp.rpObs}"/>
+                            </p:column>
+
+
+                            <p:column headerText="Operações">
+                                <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
+                                                 ajax="false" immediate="true"
+                                                 actionListener="#{receberPagarControle.excluir(rp)}"/>
+                                <p:commandButton icon="pi pi-pencil" ajax="false" styleClass="ui-button-raised"
+                                                 action="create" immediate="true"
+                                                 actionListener="#{receberPagarControle.editar(rp)}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                    </p:tab>
+
+                    <p:tab title="Contas Canceladas">
+                        <p:dataTable var="rp" value="#{receberPagarControle.listaReceberPagar}" rows="10"
+                                     paginator="true"
+                                     selectionMode="single"
+                                     selection="#{receberPagarControle.receberPagar}"
+                                     rowKey="#{rp}"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                     paginatorPosition="bottom"
+                                     rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                                     emptyMessage="Nenhum Cargo Encontrado">
+
+                            <p:column headerText="ID">
+                                <h:outputText value="#{rp.rpId}"/>
+                            </p:column>
+                            <p:column headerText="Valor">
+                                <h:outputText value="#{rp.rpValor}">
+                                    <f:convertNumber type="currency" currencySymbol="R$"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Quantidade Parcelas">
+                                <h:outputText value="#{rp.rpQtdParcelas}"/>
+                            </p:column>
+                            <p:column headerText="Número Parcela">
+                                <h:outputText value="#{rp.rpNumParcela}/#{rp.rpQtdParcelas}"/>
+                            </p:column>
+                            <p:column headerText="Data Cadastro">
+                                <h:outputText value="#{rp.rpDataCadastro}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Data Vencimento">
+                                <h:outputText value="#{rp.rpDataVencimento}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Status">
+                                <h:outputText value="#{rp.rpStatus.descricao}"/>
+                            </p:column>
+                            <p:column headerText="Observação">
+                                <h:outputText value="#{rp.rpObs}"/>
+                            </p:column>
+
+
+                            <p:column headerText="Operações">
+                                <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
+                                                 ajax="false" immediate="true"
+                                                 actionListener="#{receberPagarControle.excluir(rp)}"/>
+                                <p:commandButton icon="pi pi-pencil" ajax="false" styleClass="ui-button-raised"
+                                                 action="create" immediate="true"
+                                                 actionListener="#{receberPagarControle.editar(rp)}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                    </p:tab>
+                </p:tabView>
+            </h:form>
+        </div>
+
+
+    </ui:define>
+</ui:composition>
+</html>
+
