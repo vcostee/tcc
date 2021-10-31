@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template.xhtml">
+
+    <ui:define name="body">
+
+
+        <h:form>
+
+            <p:panelGrid columns="2"
+                         columnClasses="ui-grid-col-2,ui-grid-col-4"
+                         layout="grid"
+                         styleClass="ui-panelgrid-blank ui-fluid"
+                         style="border:0px none; background-color:transparent;">
+
+                <p:row styleClass="my-heading-row">
+                    <p:column>
+                        <p:outputLabel value="Cadastro de Plano de Pagamento"/>
+                    </p:column>
+                </p:row>
+
+                        <p:outputLabel value="Ativo?"/>
+                        <p:selectBooleanButton value="#{planoPagamentoControle.planoPagamento.planoAtivo}" offLabel="Não" onLabel="Sim"
+                                               onIcon="pi pi-check" offIcon="pi pi-times"/>
+
+
+
+                <p:outputLabel value="Nome: "/>
+                <p:inputText value="#{planoPagamentoControle.planoPagamento.planoNome}" />
+
+                <p:outputLabel value="Tipo: "/>
+                <p:selectOneRadio value="#{planoPagamentoControle.planoPagamento.planoTipo}">
+                    <f:selectItems value="#{planoPagamentoControle.tiposPlano()}" var="p"
+                                   itemLabel="#{p.descricao}" itemValue="#{p}"/>
+                </p:selectOneRadio>
+
+
+                <p:row>
+                    <p:column styleClass="ui-grid-col-2">
+
+                        <p:commandButton value="Voltar" ajax="false" styleClass="ui-button-raised" immediate="true"
+                                         action="list.xhtml"/>
+                    </p:column>
+                    <p:column styleClass="ui-grid-col-2">
+                        <p:commandButton value="Salvar" ajax="false" styleClass="ui-button-raised ui-button-success"
+                                         action="list"
+                                         actionListener="#{planoPagamentoControle.salvar()}"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+
+</html>
+

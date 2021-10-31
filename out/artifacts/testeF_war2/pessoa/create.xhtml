@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template.xhtml">
+
+    <ui:define name="body">
+
+
+        <div class="card">
+        <h:form>
+
+            <p:panelGrid columns="2"
+                         columnClasses="ui-grid-col-2,ui-grid-col-4"
+                         layout="grid"
+                         styleClass="ui-panelgrid-blank ui-fluid"
+                         style="border:0px none; background-color:transparent;">
+
+                <p:row styleClass="my-heading-row">
+                    <p:column>
+                        <p:outputLabel value="Cadastro de Pessoa"/>
+                    </p:column>
+
+                    <p:column>
+                        <p:selectOneRadio id="tipoPessoa" value="#{pessoaControle.pessoa.pesTipo}">
+                            <f:selectItems value="#{pessoaControle.tipoPessoas()}" var="tipo"
+                                           itemLabel="#{tipo.descricao}" itemValue="#{tipo}"/>
+                        </p:selectOneRadio>
+                    </p:column>
+                </p:row>
+
+
+                <p:outputLabel value="Nome: "/>
+                <p:inputText value="#{pessoaControle.pessoa.pesNome}"/>
+
+                <p:outputLabel value="Data Nascimento: "/>
+                <p:calendar value="#{pessoaControle.pessoa.pesDataNascimento}">
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                </p:calendar>
+
+                <p:outputLabel value="Rg: "/>
+                <p:inputText value="#{pessoaControle.pessoa.pesRg}"/>
+
+                <p:outputLabel value="CPF: "/>
+                <p:inputText value="#{pessoaControle.pessoa.pesCpf}"/>
+
+                <p:outputLabel value="CNPJ: "/>
+                <p:inputText value="#{pessoaControle.pessoa.pesCnpj}"/>
+
+                <p:outputLabel value="Data de Admissão: "/>
+                <p:calendar value="#{pessoaControle.pessoa.pesDataAdm}">
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                </p:calendar>
+
+                <p:outputLabel value="Cargo"/>
+                <p:selectOneMenu value="#{pessoaControle.pessoa.cargo}" converter="#{pessoaControle.cargoConverter}">
+                    <f:selectItem itemLabel="Selecione um Cargo" itemValue=""/>
+                    <f:selectItems value="#{cargoControle.listaCargo}" var="cargo"
+                                   itemValue="#{cargo}" itemLabel="#{cargo.cargoDesc}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Salário: "/>
+                <p:inputNumber value="#{pessoaControle.pessoa.pesSalario}"
+                               decimalPlaces="2" decimalSeparator=","
+                               thousandSeparator="." symbol="R$"/>
+
+
+                <p:row>
+                    <p:column styleClass="ui-grid-col-2">
+
+                        <p:commandButton value="Voltar" ajax="false" styleClass="ui-button-raised" immediate="true"
+                                         action="list.xhtml"/>
+                    </p:column>
+                    <p:column styleClass="ui-grid-col-2">
+                        <p:commandButton value="Salvar" ajax="false" styleClass="ui-button-raised ui-button-success"
+                                         action="list"
+                                         actionListener="#{pessoaControle.salvar()}"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+
+        </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>
+
+</html>
+

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template.xhtml">
+
+    <ui:define name="body">
+
+        <div class="card">
+            <h:form id="form">
+                <div style="text-align: center">
+                    <p:outputLabel value="Produtos" style="font-size: x-large"/>
+                </div>
+                <p:dataTable var="prod" value="#{produtoControle.listaProduto}" rows="10"
+                             paginator="true"
+                             selectionMode="single"
+                             selection="#{produtoControle.produto}"
+                             rowKey="#{prod}"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             paginatorPosition="bottom"
+                             rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                             emptyMessage="Nenhum Produto Encontrado">
+
+                    <f:facet name="header">
+                        <p:commandButton value="Novo Cadastro" styleClass="ui-button-raised"
+                                         actionListener="#{produtoControle.novo()}" action="create.xhtml"/>
+                    </f:facet>
+
+                    <p:column headerText="ID">
+                        <h:outputText value="#{prod.prodId}"/>
+                    </p:column>
+                    <p:column headerText="Produto">
+                        <h:outputText value="#{prod.prodNome}"/>
+                    </p:column>
+                    <p:column headerText="Estoque Atual">
+                        <h:outputText value="#{prod.prodQtd}"/>
+                    </p:column>
+                    <p:column headerText="Custo">
+                        <h:outputText value="#{prod.prodCusto}">
+                            <f:convertNumber type="currency" currencySymbol="R$"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Preço Venda">
+                        <h:outputText value="#{prod.prodPreco}">
+                            <f:convertNumber type="currency" currencySymbol="R$"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Ativo">
+                        <h:outputText value="#{prod.prodAtivo ? 'Sim' : 'Não'}"/>
+                    </p:column>
+
+                    <p:column headerText="Operações">
+                        <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
+                                         ajax="false" immediate="true"
+                                         actionListener="#{produtoControle.excluir(prod)}"/>
+                        <p:commandButton icon="pi pi-pencil" ajax="false" styleClass="ui-button-raised"
+                                         action="create" immediate="true"
+                                         actionListener="#{produtoControle.editar(prod)}"/>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </div>
+
+
+    </ui:define>
+</ui:composition>
+</html>
+

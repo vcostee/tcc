@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template.xhtml">
+
+    <ui:define name="body">
+
+        <div class="card">
+            <h:form id="form">
+                <div style="text-align: center">
+                    <p:outputLabel value="Pessoas" style="font-size: x-large"/>
+                </div>
+                <p:dataTable var="pes" value="#{pessoaControle.listaPessoa}" rows="10"
+                             paginator="true"
+                             selectionMode="single"
+                             selection="#{pessoaControle.pessoa}"
+                             rowKey="#{pes}"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             paginatorPosition="bottom"
+                             rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                             emptyMessage="Nenhum funcionario Encontrado">
+
+                    <f:facet name="header">
+                        <p:commandButton value="Novo Cadastro" styleClass="ui-button-raised"
+                                         actionListener="#{pessoaControle.novo()}" action="create.xhtml"/>
+                    </f:facet>
+
+                    <p:column headerText="ID">
+                        <h:outputText value="#{pes.id}"/>
+                    </p:column>
+                    <p:column headerText="Nome Completo">
+                        <h:outputText value="#{pes.pesNome}"/>
+                    </p:column>
+                    <p:column headerText="Data Nascimento">
+                        <h:outputText value="#{pes.pesDataNascimento}">
+                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Tipo Pessoa">
+                        <h:outputText value="#{pes.pesTipo.descricao}"/>
+                    </p:column>
+                    <p:column headerText="CPF / CNPJ">
+                        <h:outputText value="#{pes.pesCpf}"/>
+                    </p:column>
+                    <p:column headerText="Salário">
+                        <h:outputText value="#{pes.pesSalario}">
+                            <f:convertNumber type="currency" currencySymbol="R$"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Operações">
+                        <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
+                                         ajax="false"
+                                         actionListener="#{pessoaControle.excluir(pes)}"/>
+                        <p:commandButton icon="pi pi-pencil" ajax="false" styleClass="ui-button-raised"
+                                         action="create" immediate="true"
+                                         actionListener="#{pessoaControle.editar(pes)}"/>
+                    </p:column>
+
+
+                </p:dataTable>
+            </h:form>
+        </div>
+
+
+    </ui:define>
+</ui:composition>
+</html>
+

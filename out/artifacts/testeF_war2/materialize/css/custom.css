@@ -1,0 +1,7 @@
+/* heigth 100% */
+html, body {height: 100%;}
+.bloco {min-height: 100%;}
+
+/*HOME*/
+.home {background-image: url('../img/imagem.jpg'); background-repeat: no-repeat; background-size: cover;}
+.banner h2{font-size: 2.5rem; text-transform: uppercase; font-weight: 800;}
