@@ -39,7 +39,7 @@ public class Cargo implements Serializable, ClassePai {
 
     @Override
     public String toString() {
-        return super.toString();
+        return cargoId.toString();
     }
 
     @Override

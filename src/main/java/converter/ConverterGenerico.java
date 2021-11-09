@@ -22,12 +22,18 @@ public class ConverterGenerico implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        return facade.buscar(Long.parseLong(value));
+//        return facade.buscar(Long.parseLong(value));
+        if (value != null && !value.equals("null") && !value.equals("")) {
+            Long id = Long.parseLong(value);
+            return facade.buscar(id);
+        } else {
+            return null;
+        }
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        return ((ClassePai) value).getId().toString();
+        return value.toString();
     }
 
 

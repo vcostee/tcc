@@ -58,7 +58,7 @@
                 </p:calendar>
 
                 <p:outputLabel value="Cargo"/>
-                <p:selectOneMenu value="#{pessoaControle.pessoa.cargo}" converter="#{pessoaControle.cargoConverter}">
+                <p:selectOneMenu value="#{pessoaControle.pessoa.cargo}" converter="#{cargoControle.getCargoConverter()}">
                     <f:selectItem itemLabel="Selecione um Cargo" itemValue=""/>
                     <f:selectItems value="#{cargoControle.listaCargo}" var="cargo"
                                    itemValue="#{cargo}" itemLabel="#{cargo.cargoDesc}"/>
