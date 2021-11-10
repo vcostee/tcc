@@ -16,7 +16,7 @@ import java.util.List;
 @ViewAccessScoped
 public class PlanoPagamentoControle implements Serializable {
 
-    private PlanoPagamento planoPagamento = new PlanoPagamento();
+    private PlanoPagamento planoPagamento ;
     @Inject
     transient private PlanoPagamentoFacade planoPagamentoFacade;
     
@@ -24,7 +24,7 @@ public class PlanoPagamentoControle implements Serializable {
 
     @PostConstruct
     public void init(){
-        planoPagamento = new PlanoPagamento();
+
     }
 
     public ConverterGenerico getPlanoPagamentoConverter() {

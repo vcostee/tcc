@@ -17,7 +17,7 @@ import java.util.List;
 @ViewAccessScoped
 public class PessoaControle implements Serializable {
 
-    private Pessoa pessoa = new Pessoa();
+    private Pessoa pessoa;
     @Inject
     transient private PessoaFacade pessoaFacade;
     @Inject
@@ -28,7 +28,7 @@ public class PessoaControle implements Serializable {
 
     @PostConstruct
     public void init(){
-        pessoa = new Pessoa();
+
     }
 
     public ConverterGenerico getPessoaConverter() {
@@ -79,7 +79,7 @@ public class PessoaControle implements Serializable {
 
     public void salvar() {
         pessoaFacade.salvar(pessoa);
-        pessoa = new Pessoa();
+        pessoa = null;
     }
 
     public TipoPessoa[] tipoPessoas(){

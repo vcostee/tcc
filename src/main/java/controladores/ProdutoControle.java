@@ -17,7 +17,7 @@ import java.util.List;
 @ViewAccessScoped
 public class ProdutoControle implements Serializable {
 
-    private Produto produto = new Produto();
+    private Produto produto;
     @Inject
     transient private ProdutoFacade produtoFacade;
     
@@ -25,7 +25,6 @@ public class ProdutoControle implements Serializable {
 
     @PostConstruct
     public void init(){
-        produto = new Produto();
     }
 
     public ConverterGenerico getConverter() {

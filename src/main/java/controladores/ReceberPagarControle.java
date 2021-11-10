@@ -17,7 +17,7 @@ import java.util.List;
 @ViewAccessScoped
 public class ReceberPagarControle implements Serializable {
 
-    private ReceberPagar receberPagar = new ReceberPagar();
+    private ReceberPagar receberPagar ;
     @Inject
     transient private ReceberPagarFacade receberPagarFacade;
     
@@ -25,7 +25,7 @@ public class ReceberPagarControle implements Serializable {
 
     @PostConstruct
     public void init(){
-        receberPagar = new ReceberPagar();
+
     }
 
     public ConverterGenerico getConverter() {

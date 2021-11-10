@@ -16,7 +16,7 @@ import java.util.List;
 @ViewAccessScoped
 public class EstadoControle implements Serializable {
 
-    private Estado estado = new Estado();
+    private Estado estado;
     @Inject
     transient private EstadoFacade estadoFacade;
     
@@ -24,7 +24,7 @@ public class EstadoControle implements Serializable {
 
     @PostConstruct
     public void init(){
-        estado = new Estado();
+
     }
 
     public ConverterGenerico getEstadoConverter() {

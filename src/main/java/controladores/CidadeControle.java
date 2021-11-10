@@ -17,7 +17,7 @@ import java.util.List;
 @ViewAccessScoped
 public class CidadeControle implements Serializable {
 
-    private Cidade cidade = new Cidade();
+    private Cidade cidade;
     @Inject
     transient private CidadeFacade cidadeFacade;
     
@@ -25,7 +25,6 @@ public class CidadeControle implements Serializable {
 
     @PostConstruct
     public void init(){
-        cidade = new Cidade();
     }
 
     public ConverterGenerico getConverter() {

@@ -15,7 +15,7 @@ import java.util.List;
 @ViewAccessScoped
 public class CargoControle implements Serializable {
 
-    private Cargo cargo = new Cargo();
+    private Cargo cargo;
     @Inject
     transient private CargoFacade cargoFacade;
     
@@ -23,7 +23,7 @@ public class CargoControle implements Serializable {
 
     @PostConstruct
     public void init(){
-        cargo = new Cargo();
+
     }
 
     public ConverterGenerico getCargoConverter() {

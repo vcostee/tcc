@@ -17,7 +17,7 @@ import java.util.List;
 @ViewAccessScoped
 public class UnidadeMedidaControle implements Serializable {
 
-    private UnidadeMedida unidadeMedida = new UnidadeMedida();
+    private UnidadeMedida unidadeMedida ;
     @Inject
     transient private UnidadeMedidaFacade unidadeMedidaFacade;
     
@@ -25,7 +25,7 @@ public class UnidadeMedidaControle implements Serializable {
 
     @PostConstruct
     public void init(){
-        unidadeMedida = new UnidadeMedida();
+
     }
 
     public ConverterGenerico getConverter() {
