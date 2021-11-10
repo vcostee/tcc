@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class Cargo implements Serializable, ClassePai {
+public class Cargo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -55,7 +55,7 @@ public class Cargo implements Serializable, ClassePai {
         return Objects.hash(cargoId, cargoDesc, cargoSalario, cargoAtivo);
     }
 
-    @Override
+
     public Long getId() {
         return cargoId;
     }

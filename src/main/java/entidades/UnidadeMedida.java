@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-public class UnidadeMedida implements Serializable, ClassePai {
+public class UnidadeMedida implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -33,13 +33,12 @@ public class UnidadeMedida implements Serializable, ClassePai {
 
     public void setUmCasas(BigDecimal umCasas) { this.umCasas = umCasas; }
 
-    @Override
     public Long getId() {
         return umId;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return umId.toString();
     }
 }

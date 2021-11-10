@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-public class Produto implements Serializable, ClassePai {
+public class Produto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,13 +48,12 @@ public class Produto implements Serializable, ClassePai {
 
     public void setProdAtivo(Boolean prodAtivo) { this.prodAtivo = prodAtivo; }
 
-    @Override
     public Long getId() {
         return prodId;
     }
     @Override
     public String toString() {
-        return super.toString();
+        return prodId.toString();
     }
 
 }

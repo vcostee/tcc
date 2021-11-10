@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class ReceberPagar implements Serializable, ClassePai {
+public class ReceberPagar implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -83,13 +83,12 @@ public class ReceberPagar implements Serializable, ClassePai {
 
     public void setRpDataPagamento(Date rpDataPagamento) { this.rpDataPagamento = rpDataPagamento; }
 
-    @Override
     public Long getId() {
         return rpId;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return rpId.toString();
     }
 }

@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-public class Cidade implements Serializable, ClassePai {
+public class Cidade implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -30,7 +30,7 @@ public class Cidade implements Serializable, ClassePai {
 
     @Override
     public String toString() {
-        return super.toString();
+        return cidadeId.toString();
     }
 
     @Override
@@ -46,7 +46,6 @@ public class Cidade implements Serializable, ClassePai {
         return Objects.hash(cidadeId, cidadeNome);
     }
 
-    @Override
     public Long getId() {
         return cidadeId;
     }

@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class Pessoa implements Serializable, ClassePai {
+public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -102,7 +102,7 @@ public class Pessoa implements Serializable, ClassePai {
 
     @Override
     public String toString() {
-        return super.toString();
+        return pesId.toString();
     }
 
     @Override
@@ -118,7 +118,6 @@ public class Pessoa implements Serializable, ClassePai {
         return Objects.hash(pesId, pesNome, pesRg, pesCpf, pesDataNascimento, pesSalario);
     }
 
-    @Override
     public Long getId() {
         return pesId;
     }

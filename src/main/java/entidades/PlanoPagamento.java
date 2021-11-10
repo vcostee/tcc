@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class PlanoPagamento implements Serializable, ClassePai {
+public class PlanoPagamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,13 +49,13 @@ public class PlanoPagamento implements Serializable, ClassePai {
         return Objects.hash(planoId, planoNome, planoTipo);
     }
 
-    @Override
+
     public Long getId() {
         return planoId;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return planoId.toString();
     }
 }
