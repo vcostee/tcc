@@ -68,7 +68,7 @@ public class CargoControle implements Serializable {
 
     public void salvar() {
         cargoFacade.salvar(cargo);
-        cargo = new Cargo();
+        cargo = null;
     }
 
 }

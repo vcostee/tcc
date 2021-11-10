@@ -70,7 +70,7 @@ public class ProdutoControle implements Serializable {
 
     public void salvar() {
         produtoFacade.salvar(produto);
-        novo();
+        produto = null;
     }
 
 }

@@ -66,7 +66,7 @@ public class CidadeControle implements Serializable {
 
     public void salvar() {
         cidadeFacade.salvar(cidade);
-        novo();
+        cidade = null;
     }
 
 }

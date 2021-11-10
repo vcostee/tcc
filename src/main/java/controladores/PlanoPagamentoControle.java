@@ -68,7 +68,7 @@ public class PlanoPagamentoControle implements Serializable {
 
     public void salvar() {
         planoPagamentoFacade.salvar(planoPagamento);
-        planoPagamento = new PlanoPagamento();
+        planoPagamento = null;
     }
 
     public TipoPlanoPagamento[] tiposPlano(){

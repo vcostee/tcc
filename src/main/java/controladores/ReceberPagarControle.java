@@ -67,7 +67,7 @@ public class ReceberPagarControle implements Serializable {
 
     public void salvar() {
         receberPagarFacade.salvar(receberPagar);
-        novo();
+        receberPagar = null;
     }
 
 }

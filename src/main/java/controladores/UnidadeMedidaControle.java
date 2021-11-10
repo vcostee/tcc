@@ -70,7 +70,7 @@ public class UnidadeMedidaControle implements Serializable {
 
     public void salvar() {
         unidadeMedidaFacade.salvar(unidadeMedida);
-        novo();
+        unidadeMedida = null;
     }
 
 }

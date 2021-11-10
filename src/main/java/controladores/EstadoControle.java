@@ -68,7 +68,7 @@ public class EstadoControle implements Serializable {
 
     public void salvar() {
         estadoFacade.salvar(estado);
-        estado = new Estado();
+        estado = null;
     }
 
 }
