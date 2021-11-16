@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Named
@@ -51,6 +52,14 @@ public class PessoaControle implements Serializable {
     public List<Pessoa> getListaPessoasFiltrando(String parte) {
         return pessoaFacade.listaFiltrando(parte, "nome");
 
+    }
+
+    public void setarSalario(){
+        if (pessoa.getCargo() != null && pessoa.getCargo().getCargoSalario() != null) {
+            pessoa.setPesSalario(pessoa.getCargo().getCargoSalario());
+        } else {
+            pessoa.setPesSalario(BigDecimal.ZERO);
+        }
     }
 
     public List<Pessoa> getListaPessoa() {

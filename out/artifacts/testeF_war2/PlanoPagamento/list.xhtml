@@ -33,7 +33,7 @@
                     </f:facet>
 
                     <p:column headerText="ID">
-                        <h:outputText value="#{p.planoId}"/>
+                        <h:outputText value="#{p.id}"/>
                     </p:column>
                     <p:column headerText="Nome">
                         <h:outputText value="#{p.planoNome}"/>
@@ -42,7 +42,7 @@
                         <h:outputText value="#{p.planoTipo.descricao}"/>
                     </p:column>
                     <p:column headerText="Plano Ativo">
-                        <h:outputText value="#{p.planoTipo ? 'Sim' : 'Não'}"/>
+                        <h:outputText value="#{p.planoAtivo ? 'Sim' : 'Não'}"/>
                     </p:column>
 
                     <p:column headerText="Operações">

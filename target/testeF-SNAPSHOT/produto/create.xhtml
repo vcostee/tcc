@@ -39,11 +39,20 @@
 
                 <p:outputLabel value="Custo: "/>
                 <p:inputNumber value="#{produtoControle.produto.prodCusto}"
-                thousandSeparator="." decimalSeparator="," decimalPlaces="2"/>
+                               symbol="R$ "
+                               thousandSeparator="." decimalSeparator="," decimalPlaces="2"/>
 
                 <p:outputLabel value="Preço Venda: "/>
                 <p:inputNumber value="#{produtoControle.produto.prodPreco}"
+                               symbol="R$ "
                                thousandSeparator="." decimalSeparator="," decimalPlaces="2"/>
+
+                <p:outputLabel value="Unidade de Medida: "/>
+                <p:selectOneMenu value="#{produtoControle.produto.unidadeMedida}" converter="#{unidadeMedidaControle.getConverter()}">
+                    <f:selectItem itemLabel="Selecione uma Unidade de Medida" itemValue=""/>
+                    <f:selectItems value="#{unidadeMedidaControle.listaUnidades}" var="u"
+                                   itemValue="#{u}" itemLabel="#{u.umNome} (#{u.umAbrev})"/>
+                </p:selectOneMenu>
 
                 <p:row>
                     <p:column styleClass="ui-grid-col-2">

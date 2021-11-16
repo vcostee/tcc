@@ -40,13 +40,13 @@ public class Pessoa implements Serializable {
     private BigDecimal pesSalario;
 
     @Column(name = "pes_funcionario")
-    private Boolean pesFuncionario;
+    private Boolean pesFuncionario = true;
 
     @Column(name = "pes_fornecedor")
-    private Boolean pesFornecedor;
+    private Boolean pesFornecedor = false;
 
     @Column(name = "pes_tipo")
-    private TipoPessoa pesTipo;
+    private TipoPessoa pesTipo = TipoPessoa.FISICA;
 
     @ManyToOne
     @JoinColumn(name = "cargo_id")

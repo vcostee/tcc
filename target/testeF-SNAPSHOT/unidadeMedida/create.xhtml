@@ -31,10 +31,13 @@
                 <p:inputText value="#{unidadeMedidaControle.unidadeMedida.umNome}" />
 
                 <p:outputLabel value="Abreviação: "/>
-                <p:inputText value="#{unidadeMedidaControle.unidadeMedida.umAbrev}" />
+                <p:inputText value="#{unidadeMedidaControle.unidadeMedida.umAbrev}"
+                maxlength="5" required="true" requiredMessage="A abreviação é obrigatoria!" />
 
                 <p:outputLabel value="Casas Decimais: "/>
-                <p:inputNumber value="#{unidadeMedidaControle.unidadeMedida.umCasas}" />
+                <p:inputNumber value="#{unidadeMedidaControle.unidadeMedida.umCasas}"
+                               decimalSeparator="" thousandSeparator=""
+                               maxValue="3" decimalPlaces="0"/>
 
                 <p:row>
                     <p:column styleClass="ui-grid-col-2">

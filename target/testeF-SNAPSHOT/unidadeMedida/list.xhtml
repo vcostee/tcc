@@ -33,7 +33,7 @@
                     </f:facet>
 
                     <p:column headerText="ID">
-                        <h:outputText value="#{um.umId}"/>
+                        <h:outputText value="#{um.id}"/>
                     </p:column>
                     <p:column headerText="Nome">
                         <h:outputText value="#{um.umNome}"/>
@@ -42,7 +42,9 @@
                         <h:outputText value="#{um.umAbrev}"/>
                     </p:column>
                     <p:column headerText="Casas Decimais">
-                        <h:outputText value="#{um.umCasas}"/>
+                        <h:outputText value="#{um.umCasas}">
+                        <f:convertNumber type="number"/>
+                        </h:outputText>
                     </p:column>
 
                     <p:column headerText="Operações">

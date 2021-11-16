@@ -18,7 +18,7 @@ public class PlanoPagamento implements Serializable {
     private String planoNome;
 
     @Column(name = "planto_tipo")
-    private TipoPlanoPagamento planoTipo;
+    private TipoPlanoPagamento planoTipo = TipoPlanoPagamento.A_VISTA;
 
     @Column(name = "plano_ativo")
     private Boolean planoAtivo = true;

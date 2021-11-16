@@ -36,10 +36,10 @@
                 <p:inputText value="#{planoPagamentoControle.planoPagamento.planoNome}" />
 
                 <p:outputLabel value="Tipo: "/>
-                <p:selectOneRadio value="#{planoPagamentoControle.planoPagamento.planoTipo}">
+                <p:selectOneMenu value="#{planoPagamentoControle.planoPagamento.planoTipo}">
                     <f:selectItems value="#{planoPagamentoControle.tiposPlano()}" var="p"
                                    itemLabel="#{p.descricao}" itemValue="#{p}"/>
-                </p:selectOneRadio>
+                </p:selectOneMenu>
 
 
                 <p:row>

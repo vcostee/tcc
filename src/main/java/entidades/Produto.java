@@ -26,7 +26,11 @@ public class Produto implements Serializable {
     private BigDecimal prodPreco;
 
     @Column(name = "prod_ativo")
-    private Boolean prodAtivo;
+    private Boolean prodAtivo = true;
+
+    @ManyToOne
+    @JoinColumn(name = "um_id")
+    private UnidadeMedida unidadeMedida;
 
     public String getProdNome() { return prodNome; }
 
@@ -47,6 +51,14 @@ public class Produto implements Serializable {
     public Boolean getProdAtivo() { return prodAtivo; }
 
     public void setProdAtivo(Boolean prodAtivo) { this.prodAtivo = prodAtivo; }
+
+    public UnidadeMedida getUnidadeMedida() {
+        return unidadeMedida;
+    }
+
+    public void setUnidadeMedida(UnidadeMedida unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
+    }
 
     public Long getId() {
         return prodId;

@@ -34,40 +34,57 @@
                     </p:column>
                 </p:row>
 
+                <p:row styleClass="my-heading-row">
+                    <p:column>
+                        <p:selectBooleanCheckbox value="#{pessoaControle.pessoa.pesFuncionario}" itemLabel="Funcionário">
+                            <p:ajax event="change" update="labelData dataAdm cargo cargoSelect salario labelSalario"/>
+                        </p:selectBooleanCheckbox>
+                    </p:column>
+                    <p:column>
+                        <p:selectBooleanCheckbox value="#{pessoaControle.pessoa.pesFornecedor}" itemLabel="Fornecedor">
+                            <p:ajax event="change" update="labelData dataAdm cargo cargoSelect salario labelSalario"/>
+                        </p:selectBooleanCheckbox>
+                    </p:column>
+                </p:row>
 
                 <p:outputLabel value="Nome: "/>
                 <p:inputText value="#{pessoaControle.pessoa.pesNome}"/>
 
                 <p:outputLabel value="Data Nascimento: "/>
-                <p:calendar value="#{pessoaControle.pessoa.pesDataNascimento}">
+                <p:calendar value="#{pessoaControle.pessoa.pesDataNascimento}" showOn="button">
                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                 </p:calendar>
 
                 <p:outputLabel value="Rg: "/>
                 <p:inputText value="#{pessoaControle.pessoa.pesRg}"/>
 
-                <p:outputLabel value="CPF: "/>
-                <p:inputText value="#{pessoaControle.pessoa.pesCpf}"/>
+                <p:outputLabel id="labelCpf" value="CPF/CNPJ: " />
+                <p:inputText value="#{pessoaControle.pessoa.pesCpf}" id="cpf"
+                             rendered="#{pessoaControle.pessoa.pesTipo eq 'FISICA'}"/>
 
-                <p:outputLabel value="CNPJ: "/>
-                <p:inputText value="#{pessoaControle.pessoa.pesCnpj}"/>
 
-                <p:outputLabel value="Data de Admissão: "/>
-                <p:calendar value="#{pessoaControle.pessoa.pesDataAdm}">
+                <p:outputLabel id="labelData" value="Data de Admissão: " rendered="#{pessoaControle.pessoa.pesFuncionario}"/>
+                <p:calendar id="dataAdm" value="#{pessoaControle.pessoa.pesDataAdm}" showOn="button"
+                            rendered="#{pessoaControle.pessoa.pesFuncionario}">
                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                 </p:calendar>
 
-                <p:outputLabel value="Cargo"/>
-                <p:selectOneMenu value="#{pessoaControle.pessoa.cargo}" converter="#{cargoControle.getCargoConverter()}">
+                <p:outputLabel id="cargo" value="Cargo" rendered="#{pessoaControle.pessoa.pesFuncionario}"/>
+                <p:selectOneMenu value="#{pessoaControle.pessoa.cargo}" converter="#{cargoControle.getCargoConverter()}"
+                                 id="cargoSelect"
+                                 rendered="#{pessoaControle.pessoa.pesFuncionario}">
                     <f:selectItem itemLabel="Selecione um Cargo" itemValue=""/>
                     <f:selectItems value="#{cargoControle.listaCargo}" var="cargo"
                                    itemValue="#{cargo}" itemLabel="#{cargo.cargoDesc}"/>
+                    <p:ajax event="itemSelect" update="salario" listener="#{pessoaControle.setarSalario()}"/>
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Salário: "/>
+                <p:outputLabel id="labelSalario" value="Salário: " rendered="#{pessoaControle.pessoa.pesFuncionario}"/>
                 <p:inputNumber value="#{pessoaControle.pessoa.pesSalario}"
+                               id="salario"
+                               rendered="#{pessoaControle.pessoa.pesFuncionario}"
                                decimalPlaces="2" decimalSeparator=","
-                               thousandSeparator="." symbol="R$"/>
+                               thousandSeparator="." symbol="R$ "/>
 
 
                 <p:row>

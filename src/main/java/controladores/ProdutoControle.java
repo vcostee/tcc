@@ -39,7 +39,7 @@ public class ProdutoControle implements Serializable {
     }
 
     public List<Produto> getListaFiltrando(String parte) {
-        return produtoFacade.listaFiltrando(parte, "nome");
+        return produtoFacade.listaFiltrando(parte, "prodNome");
 
     }
 

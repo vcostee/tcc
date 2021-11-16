@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template.xhtml">
+
+    <ui:define name="body">
+
+
+        <h:form>
+            <div style="text-align: center">
+                <p:outputLabel value="Ajuste de Estoque" style="font-size: x-large"/>
+            </div>
+
+           <p:panelGrid columns="1"
+                        styleClass="ui-panelgrid-blank ui-fluid"
+                        style="border: none">
+
+               <p:outputLabel value="Produto" for="prod"/>
+               <p:autoComplete value="#{estoqueControle.produto}"
+                               var="p" id="prod"
+                               itemLabel="#{p.prodNome}"
+                               style="width: 25%"
+                               itemValue="#{p}"
+                               converter="#{produtoControle.converter}"
+                               completeMethod="#{produtoControle.getListaFiltrando}">
+                   <p:ajax event="itemSelect" update="info qtd"/>
+               </p:autoComplete>
+
+               <p:outputLabel value="Info. Produto" for="info"/>
+               <h:outputText id="info" value="Produto: #{estoqueControle.produto.prodNome} Estoque: #{estoqueControle.produto.prodQtd}"/>
+
+               <p:outputLabel value="Tipo Movimento" for="tipo" style="width: 25%"/>
+               <p:selectOneRadio id="tipo" value="#{estoqueControle.tipo}">
+                   <f:selectItem itemValue="add" itemLabel="Adicionar"/>
+                   <f:selectItem itemValue="sub" itemLabel="Retirar"/>
+               </p:selectOneRadio>
+
+               <p:outputLabel value="Quantidade" for="qtd"/>
+               <p:inputNumber id="qtd" value="#{estoqueControle.qtd}" style="width: 25%"
+                              decimalPlaces="#{estoqueControle.verificarQtdDecimais()}"/>
+
+
+               <p:panelGrid columns="2">
+                   <p:commandButton value="Limpar" ajax="false" styleClass="ui-button-raised" immediate="true"
+                                    actionListener="#{estoqueControle.limparTela()}"
+                                    action="estoque.xhtml"/>
+                   <p:commandButton value="Salvar" ajax="false" styleClass="ui-button-raised ui-button-success"
+                                    action="estoque.xhtml"
+                                    actionListener="#{estoqueControle.salvar()}"/>
+               </p:panelGrid>
+           </p:panelGrid>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+
+</html>
+
