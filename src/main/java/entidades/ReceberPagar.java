@@ -47,6 +47,10 @@ public class ReceberPagar implements Serializable {
     @Column(name = "rp_obs")
     private String rpObs;
 
+    @ManyToOne
+    @JoinColumn(name = "plano_id")
+    private PlanoPagamento planoPagamento;
+
     public BigDecimal getRpValor() { return rpValor; }
 
     public void setRpValor(BigDecimal rpValor) { this.rpValor = rpValor; }
@@ -85,6 +89,14 @@ public class ReceberPagar implements Serializable {
 
     public Long getId() {
         return rpId;
+    }
+
+    public PlanoPagamento getPlanoPagamento() {
+        return planoPagamento;
+    }
+
+    public void setPlanoPagamento(PlanoPagamento planoPagamento) {
+        this.planoPagamento = planoPagamento;
     }
 
     @Override

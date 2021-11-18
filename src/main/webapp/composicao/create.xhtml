@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template.xhtml">
+
+    <ui:define name="body">
+
+
+        <h:form>
+
+            <p:panelGrid columns="1"
+                         style="border:0px none; background-color:transparent;">
+
+                <p:row styleClass="my-heading-row">
+                    <p:column>
+                        <p:outputLabel value="Cadastro de Composicao"/>
+                    </p:column>
+                </p:row>
+
+                <p:outputLabel value="Produto: "/>
+                <p:autoComplete value="#{composicaoControle.produto}"
+                                var="p" id="prod"
+                                itemLabel="#{p.prodNome}"
+                                style="width: 50%"
+                                itemValue="#{p}"
+                                converter="#{produtoControle.converter}"
+                                completeMethod="#{produtoControle.getListaFiltrando}">
+                    <p:ajax event="itemSelect"/>
+                </p:autoComplete>
+
+                <p:outputLabel value="Quantidade: "/>
+                <p:inputNumber value="#{composicaoControle.qtd}"
+                               decimalPlaces="2" style="width: 50%"
+                               decimalSeparator="," thousandSeparator=""/>
+
+                <p:commandButton actionListener="#{composicaoControle.addProduto()}"
+                                 update="tabela valor"
+                                 ajax="false" icon="pi pi-plus-circle"/>
+
+                <p:dataTable var="p" value="#{composicaoControle.composicao.itemCompList}"
+                             paginator="true"
+                             id="tabela"
+                             selectionMode="single"
+                             selection="#{composicaoControle.composicao}"
+                             rowKey="#{p}"
+                             paginatorPosition="bottom"
+                             emptyMessage="Nenhuma produto encontrado">
+
+                    <p:column headerText="Produto">
+                        <h:outputText value="#{p.prod.prodNome}"/>
+                    </p:column>
+
+                    <p:column headerText="Quantidade">
+                        <h:outputText value="#{p.qtd}"/>
+                    </p:column>
+
+                    <p:column headerText="Valor">
+                        <h:outputText value="#{p.valor}"/>
+                    </p:column>
+
+                    <p:column headerText="Operações">
+                        <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
+                                         ajax="false" immediate="true"
+                                         actionListener="#{composicaoControle.excluirProduto(p)}"/>
+                    </p:column>
+                </p:dataTable>
+
+                <p:outputLabel value="Valor Total"/>
+                <h:outputText id="valor" value="#{composicaoControle.composicao.valor}">
+                    <f:convertNumber currencySymbol="R$ " type="currency"/>
+                </h:outputText>
+
+                <p:outputLabel value="Preço Venda"/>
+                <p:inputNumber value="#{composicaoControle.precoVenda}"
+                thousandSeparator="." decimalSeparator="," style="width: 50%"
+                decimalPlaces="2" symbol="R$ "/>
+
+                <p:outputLabel value="Unidade de Medida: "/>
+                <p:selectOneMenu value="#{composicaoControle.unidadeMedida}" style="width: 50%" converter="#{unidadeMedidaControle.getConverter()}">
+                    <f:selectItem itemLabel="Selecione uma Unidade de Medida" itemValue=""/>
+                    <f:selectItems value="#{unidadeMedidaControle.listaUnidades}" var="u"
+                                   itemValue="#{u}" itemLabel="#{u.umNome} (#{u.umAbrev})"/>
+                </p:selectOneMenu>
+
+
+                <f:facet name="footer">
+
+                        <p:commandButton value="Voltar" ajax="false" styleClass="ui-button-raised" immediate="true"
+                                         actionListener="#{composicaoControle.setComposicao(null)}"
+                                         action="list.xhtml"/>
+                        <p:commandButton value="Salvar" ajax="false" styleClass="ui-button-raised ui-button-success"
+                                         action="list"
+                                         actionListener="#{composicaoControle.salvar()}"/>
+                        <p:commandButton value="Salvar como porduto" ajax="false" styleClass="ui-button-raised ui-button-success"
+                                         action="list"
+                                         actionListener="#{composicaoControle.salvarProd()}"/>
+                </f:facet>
+            </p:panelGrid>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+
+</html>
+

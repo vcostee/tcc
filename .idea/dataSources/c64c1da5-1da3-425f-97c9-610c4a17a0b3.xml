@@ -796,7 +796,7 @@ false Zulu
       <StartupTime>1637027294</StartupTime>
     </root>
     <database id="2" parent="1" name="cookmanager">
-      <ObjectId>16394</ObjectId>
+      <ObjectId>16469</ObjectId>
       <Grants>11||10|C|G
 11||-9223372036854775808|U|G
 11||10|U|G
@@ -808,7 +808,7 @@ false Zulu
 13388||-9223372036854775808|U|G
 13388||10|U|G</Grants>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>736</IntrospectionStateNumber>
+      <IntrospectionStateNumber>770</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="3" parent="1" name="postgres">
@@ -887,7 +887,7 @@ false Zulu
       <Comment>standard public schema</Comment>
       <StateNumber>527</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>737</IntrospectionStateNumber>
+      <IntrospectionStateNumber>771</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="21" parent="2" name="plpgsql">
@@ -987,5 +987,564 @@ false Zulu
       <HandlerId>335</HandlerId>
       <Type>index</Type>
     </access-method>
+    <sequence id="33" parent="20" name="hibernate_sequence">
+      <ObjectId>16523</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>763</StateNumber>
+      <DataType>bigint|0s</DataType>
+    </sequence>
+    <table id="34" parent="20" name="cargo">
+      <ObjectId>16470</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>765</StateNumber>
+    </table>
+    <table id="35" parent="20" name="cidade">
+      <ObjectId>16475</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>764</StateNumber>
+    </table>
+    <table id="36" parent="20" name="estado">
+      <ObjectId>16480</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>764</StateNumber>
+    </table>
+    <table id="37" parent="20" name="pessoa">
+      <ObjectId>16487</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>765</StateNumber>
+    </table>
+    <table id="38" parent="20" name="planopagamento">
+      <ObjectId>16494</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>758</StateNumber>
+    </table>
+    <table id="39" parent="20" name="produto">
+      <ObjectId>16499</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>766</StateNumber>
+    </table>
+    <table id="40" parent="20" name="receberpagar">
+      <ObjectId>16504</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>760</StateNumber>
+    </table>
+    <table id="41" parent="20" name="unidademedida">
+      <ObjectId>16509</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>766</StateNumber>
+    </table>
+    <table id="42" parent="20" name="usuario">
+      <ObjectId>16516</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>767</StateNumber>
+    </table>
+    <column id="43" parent="34" name="cargoid">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>754</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="44" parent="34" name="cargo_ativo">
+      <Position>2</Position>
+      <DataType>boolean|0s</DataType>
+      <StateNumber>754</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="45" parent="34" name="cargo_desc">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>754</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="46" parent="34" name="cargo_salario">
+      <Position>4</Position>
+      <DataType>numeric(19,2 digit)|0s</DataType>
+      <StateNumber>754</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <index id="47" parent="34" name="cargo_pkey">
+      <ObjectId>16473</ObjectId>
+      <StateNumber>754</StateNumber>
+      <ColNames>cargoid</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="48" parent="34" name="cargo_pkey">
+      <ObjectId>16474</ObjectId>
+      <StateNumber>754</StateNumber>
+      <ColNames>cargoid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>cargo_pkey</UnderlyingIndexName>
+    </key>
+    <column id="49" parent="35" name="cidadeid">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>755</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="50" parent="35" name="cid_nome">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>755</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="51" parent="35" name="est_id">
+      <Position>3</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>755</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="52" parent="35" name="cidade_pkey">
+      <ObjectId>16478</ObjectId>
+      <StateNumber>755</StateNumber>
+      <ColNames>cidadeid</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="53" parent="35" name="cidade_pkey">
+      <ObjectId>16479</ObjectId>
+      <StateNumber>755</StateNumber>
+      <ColNames>cidadeid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>cidade_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="54" parent="35" name="fkkuel2sfjvu6rsfrw9wkxfh4f0">
+      <ObjectId>16524</ObjectId>
+      <StateNumber>764</StateNumber>
+      <ColNames>est_id</ColNames>
+      <RefTableId>16480</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>estado</RefTableName>
+      <RefKeyName>estado_pkey</RefKeyName>
+      <RefColNames>estadoid</RefColNames>
+    </foreign-key>
+    <column id="55" parent="36" name="estadoid">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>756</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="56" parent="36" name="est_nome">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>756</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="57" parent="36" name="est_uf">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>756</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="58" parent="36" name="estado_pkey">
+      <ObjectId>16485</ObjectId>
+      <StateNumber>756</StateNumber>
+      <ColNames>estadoid</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="59" parent="36" name="estado_pkey">
+      <ObjectId>16486</ObjectId>
+      <StateNumber>756</StateNumber>
+      <ColNames>estadoid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>estado_pkey</UnderlyingIndexName>
+    </key>
+    <column id="60" parent="37" name="pesid">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>757</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="61" parent="37" name="pes_cnpj">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>757</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="62" parent="37" name="pes_cpf">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>757</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="63" parent="37" name="pes_admissao">
+      <Position>4</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>757</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="64" parent="37" name="pes_nasc">
+      <Position>5</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>757</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="65" parent="37" name="pes_fornecedor">
+      <Position>6</Position>
+      <DataType>boolean|0s</DataType>
+      <StateNumber>757</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="66" parent="37" name="pes_funcionario">
+      <Position>7</Position>
+      <DataType>boolean|0s</DataType>
+      <StateNumber>757</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="67" parent="37" name="pes_nome">
+      <Position>8</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>757</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="68" parent="37" name="pes_rg">
+      <Position>9</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>757</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="69" parent="37" name="pes_salario">
+      <Position>10</Position>
+      <DataType>numeric(19,2 digit)|0s</DataType>
+      <StateNumber>757</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="70" parent="37" name="pes_tipo">
+      <Position>11</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>757</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="71" parent="37" name="cargo_id">
+      <Position>12</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>757</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="72" parent="37" name="pessoa_pkey">
+      <ObjectId>16492</ObjectId>
+      <StateNumber>757</StateNumber>
+      <ColNames>pesid</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="73" parent="37" name="pessoa_pkey">
+      <ObjectId>16493</ObjectId>
+      <StateNumber>757</StateNumber>
+      <ColNames>pesid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>pessoa_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="74" parent="37" name="fk11u6mkb6tv2vqxju3ypyt19ot">
+      <ObjectId>16529</ObjectId>
+      <StateNumber>765</StateNumber>
+      <ColNames>cargo_id</ColNames>
+      <RefTableId>16470</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>cargo</RefTableName>
+      <RefKeyName>cargo_pkey</RefKeyName>
+      <RefColNames>cargoid</RefColNames>
+    </foreign-key>
+    <column id="75" parent="38" name="planoid">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>758</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="76" parent="38" name="plano_ativo">
+      <Position>2</Position>
+      <DataType>boolean|0s</DataType>
+      <StateNumber>758</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="77" parent="38" name="plano_nome">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>758</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="78" parent="38" name="planto_tipo">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>758</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="79" parent="38" name="planopagamento_pkey">
+      <ObjectId>16497</ObjectId>
+      <StateNumber>758</StateNumber>
+      <ColNames>planoid</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="80" parent="38" name="planopagamento_pkey">
+      <ObjectId>16498</ObjectId>
+      <StateNumber>758</StateNumber>
+      <ColNames>planoid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>planopagamento_pkey</UnderlyingIndexName>
+    </key>
+    <column id="81" parent="39" name="prodid">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>759</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="82" parent="39" name="prod_ativo">
+      <Position>2</Position>
+      <DataType>boolean|0s</DataType>
+      <StateNumber>759</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="83" parent="39" name="prod_custo">
+      <Position>3</Position>
+      <DataType>numeric(19,2 digit)|0s</DataType>
+      <StateNumber>759</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="84" parent="39" name="prod_nome">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>759</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="85" parent="39" name="prod_preco">
+      <Position>5</Position>
+      <DataType>numeric(19,2 digit)|0s</DataType>
+      <StateNumber>759</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="86" parent="39" name="prod_qtd">
+      <Position>6</Position>
+      <DataType>numeric(19,2 digit)|0s</DataType>
+      <StateNumber>759</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="87" parent="39" name="um_id">
+      <Position>7</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>759</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="88" parent="39" name="produto_pkey">
+      <ObjectId>16502</ObjectId>
+      <StateNumber>759</StateNumber>
+      <ColNames>prodid</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="89" parent="39" name="produto_pkey">
+      <ObjectId>16503</ObjectId>
+      <StateNumber>759</StateNumber>
+      <ColNames>prodid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>produto_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="90" parent="39" name="fknjg84c1fioorqdngcrnkc1fga">
+      <ObjectId>16534</ObjectId>
+      <StateNumber>766</StateNumber>
+      <ColNames>um_id</ColNames>
+      <RefTableId>16509</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>unidademedida</RefTableName>
+      <RefKeyName>unidademedida_pkey</RefKeyName>
+      <RefColNames>umid</RefColNames>
+    </foreign-key>
+    <column id="91" parent="40" name="rpid">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>760</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="92" parent="40" name="rp_cadastro">
+      <Position>2</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>760</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="93" parent="40" name="rp_data_pagamento">
+      <Position>3</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>760</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="94" parent="40" name="rp_vencimento">
+      <Position>4</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>760</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="95" parent="40" name="rp_num_parcela">
+      <Position>5</Position>
+      <DataType>numeric(19,2 digit)|0s</DataType>
+      <StateNumber>760</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="96" parent="40" name="rp_obs">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>760</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="97" parent="40" name="rp_qtd_parcelas">
+      <Position>7</Position>
+      <DataType>numeric(19,2 digit)|0s</DataType>
+      <StateNumber>760</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="98" parent="40" name="rp_status">
+      <Position>8</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>760</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="99" parent="40" name="rp_tipo">
+      <Position>9</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>760</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="100" parent="40" name="rp_valor">
+      <Position>10</Position>
+      <DataType>numeric(19,2 digit)|0s</DataType>
+      <StateNumber>760</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <index id="101" parent="40" name="receberpagar_pkey">
+      <ObjectId>16507</ObjectId>
+      <StateNumber>760</StateNumber>
+      <ColNames>rpid</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="102" parent="40" name="receberpagar_pkey">
+      <ObjectId>16508</ObjectId>
+      <StateNumber>760</StateNumber>
+      <ColNames>rpid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>receberpagar_pkey</UnderlyingIndexName>
+    </key>
+    <column id="103" parent="41" name="umid">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>761</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="104" parent="41" name="um_abrev">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>761</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="105" parent="41" name="um_casas">
+      <Position>3</Position>
+      <DataType>numeric(19,2 digit)|0s</DataType>
+      <StateNumber>761</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="106" parent="41" name="um_nome">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>761</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="107" parent="41" name="unidademedida_pkey">
+      <ObjectId>16514</ObjectId>
+      <StateNumber>761</StateNumber>
+      <ColNames>umid</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="108" parent="41" name="unidademedida_pkey">
+      <ObjectId>16515</ObjectId>
+      <StateNumber>761</StateNumber>
+      <ColNames>umid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>unidademedida_pkey</UnderlyingIndexName>
+    </key>
+    <column id="109" parent="42" name="usuid">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>762</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="110" parent="42" name="usu_login">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>762</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="111" parent="42" name="usu_senha">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>762</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="112" parent="42" name="pes_id">
+      <Position>4</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>762</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="113" parent="42" name="usuario_pkey">
+      <ObjectId>16521</ObjectId>
+      <StateNumber>762</StateNumber>
+      <ColNames>usuid</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+    </index>
+    <key id="114" parent="42" name="usuario_pkey">
+      <ObjectId>16522</ObjectId>
+      <StateNumber>762</StateNumber>
+      <ColNames>usuid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>usuario_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="115" parent="42" name="fkkatm2u2pttra71p6470paev3l">
+      <ObjectId>16539</ObjectId>
+      <StateNumber>767</StateNumber>
+      <ColNames>pes_id</ColNames>
+      <RefTableId>16487</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>pessoa</RefTableName>
+      <RefKeyName>pessoa_pkey</RefKeyName>
+      <RefColNames>pesid</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

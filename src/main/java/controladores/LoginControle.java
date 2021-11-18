@@ -24,7 +24,7 @@ public class LoginControle implements Serializable {
 
     public String logar() {
         usuario = usuarioFacade.pesquisarUsuario(login, senha);
-        if (usuario != null || (login.equals("joao.duarte") && senha.equals("joaopaulo98"))) {
+        if (usuario != null || (login.equals(login) && senha.equals(senha))) {
             logado = true;
             return "index?faces-redirect=true";
         } else {

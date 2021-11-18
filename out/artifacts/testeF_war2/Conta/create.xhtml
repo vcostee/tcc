@@ -31,8 +31,6 @@
                                decimalPlaces="2" decimalSeparator=","
                                thousandSeparator="." symbol="R$"/>
 
-                <p:outputLabel value="Quantidade Parcelas: "/>
-                <p:inputNumber value="#{receberPagarControle.receberPagar.rpQtdParcelas}" />
 
                 <p:outputLabel value="Data Vencimento: "/>
                 <p:calendar value="#{receberPagarControle.receberPagar.rpDataVencimento}" >
@@ -53,7 +51,7 @@
                     <p:column styleClass="ui-grid-col-6">
                         <p:commandButton value="Salvar" ajax="false" styleClass="ui-button-raised ui-button-success"
                                          action="list"
-                                         actionListener="#{receberPagarControle.salvar()}"/>
+                                         actionListener="#{receberPagarControle.salvarConta()}"/>
                     </p:column>
                 </p:row>
             </p:panelGrid>

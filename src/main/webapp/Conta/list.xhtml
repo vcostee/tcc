@@ -14,184 +14,333 @@
         <div class="card">
             <h:form id="form">
                 <div style="text-align: center">
-                    <p:outputLabel value="Contas a Pagar" style="font-size: x-large"/>
+                    <p:outputLabel value="Contas" style="font-size: x-large"/>
                 </div>
                 <p:tabView>
-                    <p:tab title="Contas a Pagar">
-                        <p:dataTable var="rp" value="#{receberPagarControle.listaReceberPagar}" rows="10"
-                                     paginator="true"
-                                     selectionMode="single"
-                                     selection="#{receberPagarControle.receberPagar}"
-                                     rowKey="#{rp}"
-                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                                     paginatorPosition="bottom"
-                                     rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
-                                     emptyMessage="Nenhuma Conta Encontrada">
+                    <p:tab title="Receber">
+                        <p:tabView>
+                            <p:tab title="Contas a Receber">
+                                <p:dataTable var="rp" value="#{receberPagarControle.listaReceber}" rows="10"
+                                             paginator="true"
+                                             selectionMode="single"
+                                             selection="#{receberPagarControle.receberPagar}"
+                                             rowKey="#{rp}"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                             paginatorPosition="bottom"
+                                             rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                                             emptyMessage="Nenhuma Conta Encontrada">
 
-                            <f:facet name="header">
-                                <p:commandButton value="Novo Cadastro" styleClass="ui-button-raised"
-                                                 actionListener="#{receberPagarControle.novo()}" action="create.xhtml"/>
-                            </f:facet>
+                                    <f:facet name="header">
+                                        <p:commandButton value="Novo Cadastro" styleClass="ui-button-raised"
+                                                         actionListener="#{receberPagarControle.novoReceber()}" action="create.xhtml"/>
+                                    </f:facet>
 
-                            <p:column headerText="ID">
-                                <h:outputText value="#{rp.id}"/>
-                            </p:column>
-                            <p:column headerText="Valor">
-                                <h:outputText value="#{rp.rpValor}">
-                                    <f:convertNumber type="currency" currencySymbol="R$"/>
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="Quantidade Parcelas">
-                                <h:outputText value="#{rp.rpQtdParcelas}"/>
-                            </p:column>
-                            <p:column headerText="Número Parcela">
-                                <h:outputText value="#{rp.rpNumParcela}/#{rp.rpQtdParcelas}"/>
-                            </p:column>
-                            <p:column headerText="Data Cadastro">
-                                <h:outputText value="#{rp.rpDataCadastro}">
-                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="Data Vencimento">
-                                <h:outputText value="#{rp.rpDataVencimento}">
-                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="Status">
-                                <h:outputText value="#{rp.rpStatus.descricao}"/>
-                            </p:column>
-                            <p:column headerText="Observação">
-                                <h:outputText value="#{rp.rpObs}"/>
-                            </p:column>
+                                    <p:column headerText="ID">
+                                        <h:outputText value="#{rp.id}"/>
+                                    </p:column>
+                                    <p:column headerText="Valor">
+                                        <h:outputText value="#{rp.rpValor}">
+                                            <f:convertNumber type="currency" currencySymbol="R$"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Cadastro">
+                                        <h:outputText value="#{rp.rpDataCadastro}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Vencimento">
+                                        <h:outputText value="#{rp.rpDataVencimento}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Status">
+                                        <h:outputText value="#{rp.rpStatus.descricao}"/>
+                                    </p:column>
+                                    <p:column headerText="Observação">
+                                        <h:outputText value="#{rp.rpObs}"/>
+                                    </p:column>
 
 
-                            <p:column headerText="Operações">
-                                <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
-                                                 ajax="false" immediate="true"
-                                                 actionListener="#{receberPagarControle.excluir(rp)}"/>
-                                <p:commandButton icon="pi pi-pencil" ajax="false" styleClass="ui-button-raised"
-                                                 action="create" immediate="true"
-                                                 actionListener="#{receberPagarControle.editar(rp)}"/>
-                            </p:column>
-                        </p:dataTable>
+                                    <p:column headerText="Operações">
+                                        <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
+                                                         ajax="false" immediate="true"
+                                                         actionListener="#{receberPagarControle.excluir(rp)}"/>
+                                        <p:commandButton icon="pi pi-pencil" ajax="false" styleClass="ui-button-raised"
+                                                         action="create" immediate="true"
+                                                         actionListener="#{receberPagarControle.editar(rp)}"/>
+                                        <p:commandButton icon="pi pi-times" ajax="false" styleClass="ui-button-raised"
+                                                         immediate="true"
+                                                         actionListener="#{receberPagarControle.cancelarConta(rp)}"/>
+                                        <p:commandButton icon="pi pi-dollar" ajax="false" styleClass="ui-button-raised"
+                                                         action="pagamento" immediate="true"
+                                                         actionListener="#{receberPagarControle.recebimento(rp)}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </p:tab>
+
+                            <p:tab title="Contas Recebidas">
+                                <p:dataTable var="rp" value="#{receberPagarControle.listaRecebida}" rows="10"
+                                             paginator="true"
+                                             selectionMode="single"
+                                             selection="#{receberPagarControle.receberPagar}"
+                                             rowKey="#{rp}"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                             paginatorPosition="bottom"
+                                             rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                                             emptyMessage="Nenhuma contra encontrada">
+
+                                    <p:column headerText="ID">
+                                        <h:outputText value="#{rp.id}"/>
+                                    </p:column>
+                                    <p:column headerText="Valor">
+                                        <h:outputText value="#{rp.rpValor}">
+                                            <f:convertNumber type="currency" currencySymbol="R$"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Cadastro">
+                                        <h:outputText value="#{rp.rpDataCadastro}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Vencimento">
+                                        <h:outputText value="#{rp.rpDataVencimento}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Recebimento">
+                                        <h:outputText value="#{rp.rpDataPagamento}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Status">
+                                        <h:outputText value="#{rp.rpStatus.descricao}"/>
+                                    </p:column>
+                                    <p:column headerText="Observação">
+                                        <h:outputText value="#{rp.rpObs}"/>
+                                    </p:column>
+
+
+                                    <p:column headerText="Operações">
+                                        <p:commandButton icon="pi pi-times" styleClass="ui-button-raised"
+                                                         ajax="false" immediate="true"
+                                                         actionListener="#{receberPagarControle.cancelarConta(rp)}"/>
+                                    </p:column>
+
+                                </p:dataTable>
+                            </p:tab>
+
+                            <p:tab title="Contas Canceladas">
+                                <p:dataTable var="rp" value="#{receberPagarControle.listaRecebidaCancelada}" rows="10"
+                                             paginator="true"
+                                             selectionMode="single"
+                                             selection="#{receberPagarControle.receberPagar}"
+                                             rowKey="#{rp}"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                             paginatorPosition="bottom"
+                                             rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                                             emptyMessage="Nenhum Cargo Encontrado">
+
+                                    <p:column headerText="ID">
+                                        <h:outputText value="#{rp.id}"/>
+                                    </p:column>
+                                    <p:column headerText="Valor">
+                                        <h:outputText value="#{rp.rpValor}">
+                                            <f:convertNumber type="currency" currencySymbol="R$"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Cadastro">
+                                        <h:outputText value="#{rp.rpDataCadastro}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Vencimento">
+                                        <h:outputText value="#{rp.rpDataVencimento}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Status">
+                                        <h:outputText value="#{rp.rpStatus.descricao}"/>
+                                    </p:column>
+                                    <p:column headerText="Observação">
+                                        <h:outputText value="#{rp.rpObs}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Operações">
+                                        <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
+                                                         ajax="false" immediate="true"
+                                                         actionListener="#{receberPagarControle.excluir(rp)}"/>
+                                    </p:column>
+
+                                </p:dataTable>
+                            </p:tab>
+                        </p:tabView>
                     </p:tab>
+                    <p:tab title="Pagar">
+                        <p:tabView>
+                            <p:tab title="Contas a Pagar">
+                                <p:dataTable var="rp" value="#{receberPagarControle.listaPagar}" rows="10"
+                                             paginator="true"
+                                             selectionMode="single"
+                                             selection="#{receberPagarControle.receberPagar}"
+                                             rowKey="#{rp}"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                             paginatorPosition="bottom"
+                                             rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                                             emptyMessage="Nenhuma Conta Encontrada">
 
-                    <p:tab title="Contas Pagas">
-                        <p:dataTable var="rp" value="#{receberPagarControle.listaReceberPagar}" rows="10"
-                                     paginator="true"
-                                     selectionMode="single"
-                                     selection="#{receberPagarControle.receberPagar}"
-                                     rowKey="#{rp}"
-                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                                     paginatorPosition="bottom"
-                                     rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
-                                     emptyMessage="Nenhum Cargo Encontrado">
+                                    <f:facet name="header">
+                                        <p:commandButton value="Novo Cadastro" styleClass="ui-button-raised"
+                                                         actionListener="#{receberPagarControle.novoPagar()}" action="create.xhtml"/>
+                                    </f:facet>
 
-                            <f:facet name="header">
-                                <p:commandButton value="Novo Cadastro" styleClass="ui-button-raised"
-                                                 actionListener="#{receberPagarControle.novo()}" action="create.xhtml"/>
-                            </f:facet>
-
-                            <p:column headerText="ID">
-                                <h:outputText value="#{rp.rpId}"/>
-                            </p:column>
-                            <p:column headerText="Valor">
-                                <h:outputText value="#{rp.rpValor}">
-                                    <f:convertNumber type="currency" currencySymbol="R$"/>
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="Quantidade Parcelas">
-                                <h:outputText value="#{rp.rpQtdParcelas}"/>
-                            </p:column>
-                            <p:column headerText="Número Parcela">
-                                <h:outputText value="#{rp.rpNumParcela}/#{rp.rpQtdParcelas}"/>
-                            </p:column>
-                            <p:column headerText="Data Cadastro">
-                                <h:outputText value="#{rp.rpDataCadastro}">
-                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="Data Vencimento">
-                                <h:outputText value="#{rp.rpDataVencimento}">
-                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="Status">
-                                <h:outputText value="#{rp.rpStatus.descricao}"/>
-                            </p:column>
-                            <p:column headerText="Observação">
-                                <h:outputText value="#{rp.rpObs}"/>
-                            </p:column>
+                                    <p:column headerText="ID">
+                                        <h:outputText value="#{rp.id}"/>
+                                    </p:column>
+                                    <p:column headerText="Valor">
+                                        <h:outputText value="#{rp.rpValor}">
+                                            <f:convertNumber type="currency" currencySymbol="R$"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Cadastro">
+                                        <h:outputText value="#{rp.rpDataCadastro}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Vencimento">
+                                        <h:outputText value="#{rp.rpDataVencimento}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Status">
+                                        <h:outputText value="#{rp.rpStatus.descricao}"/>
+                                    </p:column>
+                                    <p:column headerText="Observação">
+                                        <h:outputText value="#{rp.rpObs}"/>
+                                    </p:column>
 
 
-                            <p:column headerText="Operações">
-                                <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
-                                                 ajax="false" immediate="true"
-                                                 actionListener="#{receberPagarControle.excluir(rp)}"/>
-                                <p:commandButton icon="pi pi-pencil" ajax="false" styleClass="ui-button-raised"
-                                                 action="create" immediate="true"
-                                                 actionListener="#{receberPagarControle.editar(rp)}"/>
-                            </p:column>
+                                    <p:column headerText="Operações">
+                                        <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
+                                                         ajax="false" immediate="true"
+                                                         actionListener="#{receberPagarControle.excluir(rp)}"/>
+                                        <p:commandButton icon="pi pi-pencil" ajax="false" styleClass="ui-button-raised"
+                                                         action="create" immediate="true"
+                                                         actionListener="#{receberPagarControle.editar(rp)}"/>
+                                        <p:commandButton icon="pi pi-times" ajax="false" styleClass="ui-button-raised"
+                                                         immediate="true"
+                                                         actionListener="#{receberPagarControle.cancelarConta(rp)}"/>
+                                        <p:commandButton icon="pi pi-dollar" ajax="false" styleClass="ui-button-raised"
+                                                         action="pagamento" immediate="true"
+                                                         actionListener="#{receberPagarControle.pagamento(rp)}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </p:tab>
 
-                        </p:dataTable>
-                    </p:tab>
+                            <p:tab title="Contas Pagas">
+                                <p:dataTable var="rp" value="#{receberPagarControle.listaPaga}" rows="10"
+                                             paginator="true"
+                                             selectionMode="single"
+                                             selection="#{receberPagarControle.receberPagar}"
+                                             rowKey="#{rp}"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                             paginatorPosition="bottom"
+                                             rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                                             emptyMessage="Nenhuma contra encontrada">
 
-                    <p:tab title="Contas Canceladas">
-                        <p:dataTable var="rp" value="#{receberPagarControle.listaReceberPagar}" rows="10"
-                                     paginator="true"
-                                     selectionMode="single"
-                                     selection="#{receberPagarControle.receberPagar}"
-                                     rowKey="#{rp}"
-                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                                     paginatorPosition="bottom"
-                                     rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
-                                     emptyMessage="Nenhum Cargo Encontrado">
-
-                            <p:column headerText="ID">
-                                <h:outputText value="#{rp.rpId}"/>
-                            </p:column>
-                            <p:column headerText="Valor">
-                                <h:outputText value="#{rp.rpValor}">
-                                    <f:convertNumber type="currency" currencySymbol="R$"/>
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="Quantidade Parcelas">
-                                <h:outputText value="#{rp.rpQtdParcelas}"/>
-                            </p:column>
-                            <p:column headerText="Número Parcela">
-                                <h:outputText value="#{rp.rpNumParcela}/#{rp.rpQtdParcelas}"/>
-                            </p:column>
-                            <p:column headerText="Data Cadastro">
-                                <h:outputText value="#{rp.rpDataCadastro}">
-                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="Data Vencimento">
-                                <h:outputText value="#{rp.rpDataVencimento}">
-                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="Status">
-                                <h:outputText value="#{rp.rpStatus.descricao}"/>
-                            </p:column>
-                            <p:column headerText="Observação">
-                                <h:outputText value="#{rp.rpObs}"/>
-                            </p:column>
+                                    <p:column headerText="ID">
+                                        <h:outputText value="#{rp.id}"/>
+                                    </p:column>
+                                    <p:column headerText="Valor">
+                                        <h:outputText value="#{rp.rpValor}">
+                                            <f:convertNumber type="currency" currencySymbol="R$"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Cadastro">
+                                        <h:outputText value="#{rp.rpDataCadastro}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Vencimento">
+                                        <h:outputText value="#{rp.rpDataVencimento}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Pagamento">
+                                        <h:outputText value="#{rp.rpDataPagamento}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Plano Pagamento">
+                                        <h:outputText value="#{rp.planoPagamento.planoNome}"/>
+                                    </p:column>
+                                    <p:column headerText="Status">
+                                        <h:outputText value="#{rp.rpStatus.descricao}"/>
+                                    </p:column>
+                                    <p:column headerText="Observação">
+                                        <h:outputText value="#{rp.rpObs}"/>
+                                    </p:column>
 
 
-                            <p:column headerText="Operações">
-                                <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
-                                                 ajax="false" immediate="true"
-                                                 actionListener="#{receberPagarControle.excluir(rp)}"/>
-                                <p:commandButton icon="pi pi-pencil" ajax="false" styleClass="ui-button-raised"
-                                                 action="create" immediate="true"
-                                                 actionListener="#{receberPagarControle.editar(rp)}"/>
-                            </p:column>
+                                    <p:column headerText="Operações">
+                                        <p:commandButton icon="pi pi-times" styleClass="ui-button-raised"
+                                                         ajax="false" immediate="true"
+                                                         actionListener="#{receberPagarControle.cancelarConta(rp)}"/>
+                                    </p:column>
 
-                        </p:dataTable>
+                                </p:dataTable>
+                            </p:tab>
+
+                            <p:tab title="Contas Canceladas">
+                                <p:dataTable var="rp" value="#{receberPagarControle.listaPagaCancelada}" rows="10"
+                                             paginator="true"
+                                             selectionMode="single"
+                                             selection="#{receberPagarControle.receberPagar}"
+                                             rowKey="#{rp}"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                             paginatorPosition="bottom"
+                                             rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                                             emptyMessage="Nenhum Cargo Encontrado">
+
+                                    <p:column headerText="ID">
+                                        <h:outputText value="#{rp.id}"/>
+                                    </p:column>
+                                    <p:column headerText="Valor">
+                                        <h:outputText value="#{rp.rpValor}">
+                                            <f:convertNumber type="currency" currencySymbol="R$"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Cadastro">
+                                        <h:outputText value="#{rp.rpDataCadastro}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Data Vencimento">
+                                        <h:outputText value="#{rp.rpDataVencimento}">
+                                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Status">
+                                        <h:outputText value="#{rp.rpStatus.descricao}"/>
+                                    </p:column>
+                                    <p:column headerText="Observação">
+                                        <h:outputText value="#{rp.rpObs}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Operações">
+                                        <p:commandButton icon="pi pi-trash" styleClass="ui-button-raised"
+                                                         ajax="false" immediate="true"
+                                                         actionListener="#{receberPagarControle.excluir(rp)}"/>
+                                    </p:column>
+
+                                </p:dataTable>
+                            </p:tab>
+                        </p:tabView>
                     </p:tab>
                 </p:tabView>
             </h:form>

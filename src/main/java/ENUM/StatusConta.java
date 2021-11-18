@@ -3,6 +3,7 @@ package ENUM;
 public enum StatusConta {
     ABERTA("Aberta"),
     PAGA("Paga"),
+    RECEBIDA("Recebida"),
     CANCELADA("Cancelada");
 
     private String descricao;

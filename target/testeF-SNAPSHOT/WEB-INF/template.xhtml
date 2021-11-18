@@ -10,9 +10,9 @@
 
 <h:head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+    <link rel="icon" href="/img/logo.png"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Cook Manager</title>
-    <link rel="icon" href="/img/logo.png">
 </h:head>
 <h:body>
     <p:growl id="messages"/>
@@ -31,6 +31,15 @@
 
     <ul id="dropdown2" class="dropdown-content">
         <li><a href="/testeF/ajusteEstoque/estoque.xhtml">Ajuste Estoque</a></li>
+        <li><a href="/testeF/composicao/list.xhtml">Composição</a></li>
+    </ul>
+
+    <ul id="dropdown3" class="dropdown-content">
+        <li><a href="/testeF/Conta/list.xhtml">Contas</a></li>
+    </ul>
+
+    <ul id="dropdown4" class="dropdown-content">
+        <li><a href="/testeF/ajusteEstoque/estoque.xhtml">Ajuste Estoque</a></li>
     </ul>
     <nav>
         <div class="nav-wrapper" style="background-color: #26a69a">
@@ -38,6 +47,8 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Cadastros <i class="pi pi-angle-down" style="font-size: 1rem"></i></a></li>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Movimentos <i class="pi pi-angle-down" style="font-size: 1rem"></i></a></li>
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown3">Financeiro <i class="pi pi-angle-down" style="font-size: 1rem"></i></a></li>
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown4">Relatórios <i class="pi pi-angle-down" style="font-size: 1rem"></i></a></li>
             </ul>
         </div>
     </nav>
